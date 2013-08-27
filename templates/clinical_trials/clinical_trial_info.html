@@ -1,0 +1,49 @@
+<div class="page-padding">
+	<p class="irb-style"> IRB #<%= irbNumber %> </p>
+
+	<h3> Objective </h3>
+	<p> <%= objective %> </p>
+
+	<h3> Eligibility </h3>
+	<p> <%= eligibility %> </p>
+
+	<h3> Principal Investigator(s) </h3>
+    <div class="info-section">
+    	<a class="menu-btn" href="#memberinfo/<%= investigator %>">
+            <span class="menu-btn-inner" style="text-align: center"><%= primaryPI %></span>
+        </a> 
+    </div>
+
+    <h3> Sponsor(s) </h3>
+    <div class="info-section">
+        <div class="menu-btn no-cursor">
+            <span class="menu-btn-no-arrow" style="text-align: center"><%= sponsor %></span>
+        </div>    
+    </div>
+
+    <h3> Contact Information </h3>
+    <div class="info-section">
+        <div class="menu-btn no-cursor">
+            <span class="menu-btn-no-arrow">
+            	<span class="field-name">Name</span><%= contactName %></span>
+        </div>
+        <div class="menu-btn no-cursor">
+            <span class="menu-btn-no-arrow">
+            	<span class="field-name">Phone</span>
+                <a href="tel:<%= contactPhone %>"><%= contactPhone %></a>
+            </span>
+        </div>
+        <div class="menu-btn no-cursor">
+            <span class="menu-btn-no-arrow center-name">
+                <a href="mailto:<%= contactEmail %>"><%= contactEmail %></a>
+            </span>
+        </div>
+    </div>    
+    
+    <h3> Participating Institution(s) </h3>
+    <div class="info-section">
+        <div class="menu-btn no-cursor">
+            <span class="menu-btn-no-arrow center-name"><%= participatingSites %></span>
+        </div>
+    </div>
+</div>

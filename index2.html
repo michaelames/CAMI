@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html manifest="cami.manifest">
+<head>
+	<title>CAMI</title>
+
+	<meta name="viewport" content="width=device-width; minimum-scale=1.0; maximum-scale=1.0; user-scalable=0"/>
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<link rel="apple-touch-icon-precomposed" href="apple-touch-icon-precomposed.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon-72x72-precomposed.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114x114-precomposed.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="apple-touch-icon-144x144-precomposed.png" />
+    <link rel="icon" type="image/png" href="apple-touch-icon-precomposed.png">
+
+
+	<link rel="stylesheet" href="css/theme.css" />
+</head>
+
+<body class="main">
+	<!-- Header -->
+	<div style="display: none" class="page-header" id="header">
+		<div class="ui-header inner-page-header">
+			<div class="nav-btn left-btn">
+				<div id="about-back-button" class="button back">
+					<div>
+						<span></span>
+					</div>
+					<p>Back</p>
+				</div>
+			</div>
+			<h1 class="header-title" style="color: white" id="headerTitle">CAMI App</h1>
+			<div class="nav-btn home-btn">
+				<a href="#">
+					<img src="images/home.png" height="16" width="16" class="nav-btn home-btn button"/>
+				</a>
+			</div>
+		</div>
+	</div>
+	
+	<!-- Load our pages into here -->
+	<div id="content-wrapper">
+		<div id="content">
+			<img src="images/x_small_logo.png" style="margin-top:25px;" height="82" width="160" />
+			<h2 style="text-align:center; margin-top:50px; text-shadow: 0 -1px 0 #000;">Loading...</h2>
+		</div>
+	</div>
+
+	<!--<script type="text/javascript" src="all.js"></script><!-- -->
+	<!-- Lib Scripts -->
+	<script type="text/javascript" src="js/libs/zepto.min.js"></script>
+	<script type="text/javascript" src="js/libs/underscore.min.js"></script>
+	<script type="text/javascript" src="js/libs/backbone.min.js"></script>
+	<script type="text/javascript" src="js/libs/iscroll.js"></script>
+	<!-- Views -->
+	<script type="text/javascript" src="js/views/home/home.js"></script>
+	<script type="text/javascript" src="js/views/settings/settings.js"></script>
+	<script type="text/javascript" src="js/views/members/member_search.js"></script>
+	<script type="text/javascript" src="js/views/members/member_results.js"></script>
+	<script type="text/javascript" src="js/views/members/member_info.js"></script>
+	<script type="text/javascript" src="js/views/clinical_trials/clinical_trial_search.js"></script>
+	<script type="text/javascript" src="js/views/clinical_trials/clinical_trial_results.js"></script>
+	<script type="text/javascript" src="js/views/clinical_trials/clinical_trial_info.js"></script>
+	<script type="text/javascript" src="js/views/shared_resources/shared_resources_search.js"></script>
+	<script type="text/javascript" src="js/views/shared_resources/shared_resources_info.js"></script>
+	<!-- Models -->
+	<script type="text/javascript" src="js/models/member.js"></script>
+	<script type="text/javascript" src="js/models/clinical_trial.js"></script>
+	<script type="text/javascript" src="js/models/member_info.js"></script>
+	<script type="text/javascript" src="js/models/trial_info.js"></script>
+	<script type="text/javascript" src="js/models/shared_resource.js"></script>
+	<!-- Collections -->
+	<script type="text/javascript" src="js/collections/member_collection.js"></script>
+	<script type="text/javascript" src="js/collections/clinical_trial_collection.js"></script>
+	<script type="text/javascript" src="js/collections/member_info_collections.js"></script>
+	<script type="text/javascript" src="js/collections/trial_info_collections.js"></script>
+	<script type="text/javascript" src="js/collections/shared_resource_collection.js"></script>
+	<!-- Scripts -->
+	<script type="text/javascript" src="js/data_service.js"></script>
+	<script type="text/javascript" src="js/router.js"></script>
+	<script type="text/javascript" src="js/app.js"></script><!-- -->
+</body>
+</html>

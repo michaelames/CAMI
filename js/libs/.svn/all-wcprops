@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/CUCancerCenter/!svn/ver/300/trunk/CUCancerCenter/js/libs
+END
+backbone.js
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/CUCancerCenter/!svn/ver/257/trunk/CUCancerCenter/js/libs/backbone.js
+END
+iphone-scroller.js
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/CUCancerCenter/!svn/ver/296/trunk/CUCancerCenter/js/libs/iphone-scroller.js
+END
+backbone.min.js
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/CUCancerCenter/!svn/ver/51/trunk/CUCancerCenter/js/libs/backbone.min.js
+END
+iscroll.js
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/CUCancerCenter/!svn/ver/300/trunk/CUCancerCenter/js/libs/iscroll.js
+END
+underscore.js
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/CUCancerCenter/!svn/ver/61/trunk/CUCancerCenter/js/libs/underscore.js
+END
+underscore.min.js
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/CUCancerCenter/!svn/ver/51/trunk/CUCancerCenter/js/libs/underscore.min.js
+END
+zepto.js
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/CUCancerCenter/!svn/ver/61/trunk/CUCancerCenter/js/libs/zepto.js
+END
+zepto.min.js
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/CUCancerCenter/!svn/ver/51/trunk/CUCancerCenter/js/libs/zepto.min.js
+END

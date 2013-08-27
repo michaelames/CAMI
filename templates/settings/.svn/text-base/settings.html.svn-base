@@ -1,0 +1,25 @@
+<div class="padding-header-members">
+    <img class ="logo" src="images/x_small_logo.png" height="82" width="160" />
+</div>
+<div class="menu">
+    <div class="menu-btn no-cursor">
+        <span class="menu-btn-no-arrow field-name">Members</span><%= members %>
+    </div>
+    <div class="menu-btn no-cursor">
+        <span class="menu-btn-no-arrow field-name">Trials</span><%= trials %>
+    </div>
+    <div class="menu-btn no-cursor">
+        <span class="menu-btn-no-arrow field-name" style="text-overflow: clip">Resources</span><%= resources %>
+    </div>
+    <div class="menu-btn no-cursor">
+        <span class="menu-btn-no-arrow field-name">Updated</span><%= lastUpdatedDate %> 
+    </div>
+    <div class="menu-btn no-cursor" onclick="
+        if (CAMI.haveInternet()) { 
+            lastUpdatedDate = null
+            CAMI.AppDataService.loadData();
+            app.currentPage.render();
+        }">
+        <span class="menu-btn-no-arrow center-name">Click to retrieve data</span>
+    </div>
+</div>

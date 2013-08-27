@@ -1,0 +1,7 @@
+//Our models representing searchable member info
+window.School = Backbone.Model.extend({});
+window.Division = Backbone.Model.extend({});
+window.Department = Backbone.Model.extend({});
+window.Rank = Backbone.Model.extend({});
+window.PrimaryProgram = Backbone.Model.extend({});
+window.Institution = Backbone.Model.extend({});

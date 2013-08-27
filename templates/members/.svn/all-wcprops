@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/CUCancerCenter/!svn/ver/330/trunk/CUCancerCenter/templates/members
+END
+member_search.html
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/CUCancerCenter/!svn/ver/305/trunk/CUCancerCenter/templates/members/member_search.html
+END
+member_list_item.html
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/CUCancerCenter/!svn/ver/276/trunk/CUCancerCenter/templates/members/member_list_item.html
+END
+member_info.html
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/CUCancerCenter/!svn/ver/309/trunk/CUCancerCenter/templates/members/member_info.html
+END
+member_results.html
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/CUCancerCenter/!svn/ver/330/trunk/CUCancerCenter/templates/members/member_results.html
+END

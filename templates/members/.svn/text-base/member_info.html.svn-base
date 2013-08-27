@@ -1,0 +1,45 @@
+<div class="page-padding">
+    <div class="info-section">
+        <img src="images/default_person.png" class="person_image"/>
+        <div style="display: inline-block; vertical-align: top">
+    	    <p class="person-info person-name"><%= firstName %> <%= lastName %></p>
+    	    <p class="person-info"><%= facultyRack %></p>
+    	    <p class="person-info"><%= primaryProgram %></p>
+    	    <p class="person-info"><%= institution %></p>
+    	    <p class="person-info"><%= division %></p>
+    	</div>
+    </div>
+    <div class="info-section">
+        <div class="menu-btn">
+            <span class="menu-btn-no-arrow center-name"><a class="field" href="mailto:<%= email %>"><%= email %></a></span>
+        </div>
+    </div>
+    <div class="info-section">
+        <div class="menu-btn">
+            <span class="menu-btn-no-arrow">
+            	<span class="field-name">Phone</span>
+                <a href="tel:<%= phone %>"><%= phone %></a>
+            </span>
+        </div>
+        <div class="menu-btn no-cursor">
+            <span class="menu-btn-no-arrow">
+            	<span class="field-name">Fax</span> <%= fax %>
+            </span>
+        </div>
+        <div class="menu-btn no-cursor">
+            <span class="menu-btn-no-arrow">
+            	<span class="field-name">Type</span> <%= type %>
+            </span>
+        </div>
+        <div class="menu-btn no-cursor">
+            <span class="menu-btn-no-arrow">
+                <span class="field-name">As Of</span> <%= asOf %>
+            </span>
+        </div>
+        <div class="menu-btn no-cursor">
+            <span class="menu-btn-no-arrow">
+            	<span class="field-name">Mailstop</span> <%= campusBox %>
+            </span>
+        </div>
+    </div>
+</div>

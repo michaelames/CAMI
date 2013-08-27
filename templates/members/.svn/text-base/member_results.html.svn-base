@@ -1,0 +1,6 @@
+<div class="search-bar">
+    <input class="member-results ui-input-text ui-body-c" style="width:75%; display:inline;" id="searchBar" value="" type="text" />
+	<a class="search-btn" onclick="filterMembers()">
+        <img  src="images/mag_glass.png">
+    </a>
+</div>

@@ -1,0 +1,5 @@
+<div class='menu' style='width:100%'>
+	<% items.each(function(index, item) { %>
+		<%= itemTemplate(item) %>
+	<% }); %>
+</div>

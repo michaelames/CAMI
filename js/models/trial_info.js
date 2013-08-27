@@ -1,0 +1,5 @@
+//Our models representing searchable clinical trial info
+window.Phase = Backbone.Model.extend({});
+window.CoopGroup = Backbone.Model.extend({});
+window.DiseaseSite = Backbone.Model.extend({});
+window.Site = Backbone.Model.extend({});

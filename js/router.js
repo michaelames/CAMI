@@ -1,0 +1,213 @@
+/***********
+Contains functionality to move between pages
+***********/
+
+var AppRouter = Backbone.Router.extend({
+	currentPageName: "Home",	// Default to the home page
+	pageHistory: [],			// Keep track of the history of pages (we only store the page URL). Used to identify the direction (left or right) of the sliding transition between pages.
+	// Map paths/routes to functions to call
+	routes: {
+		"": "home",
+		"home": "home",
+		"settings": "settings",
+		"membersearch": "memberSearch",
+		"memberresults/:id": "memberResults",
+		"memberinfo/:id": "memberInfo",
+		"trialsearch": "trialSearch",
+		"trialresults": "trialResults",
+		"trialinfo/:id": "trialInfo",
+		"sharedresourcesearch": "sharedResourcesSearch",
+		"sharedresourceinfo/:id": "sharedResourcesInfo"
+	},
+	initialize: function () {
+		// Clear out the "Loading..." image and text
+		$("#content").html("");
+		this.homePage = new HomePage();
+		this.homePage.render();
+		myScroll.refresh();
+	},
+	home: function () {
+		this.currentPageName = "Home";
+		this.slidePage(this.homePage);
+	},
+	settings: function () {
+		this.currentPageName = "Settings";
+		this.slidePage(new SettingsPage().render());
+	},
+	memberSearch: function () {
+		this.currentPageName = "Member Search";
+		CAMI.searchType = "";
+		CAMI.searchName = "";
+		this.slidePage(new MemberSearchPage().render());
+	},
+	memberResults: function (id) {
+		// If we are searching for members, filter by the search criteria and return
+		if (parseInt(id) === 0) {
+			searchedMembers = _.filter(memberCollection.models, function (model) {
+				switch (CAMI.searchType) {
+				case "Department":
+					return CAMI.htmlEscape(model.attributes.department) === CAMI.searchName;
+				case "Division":
+					return CAMI.htmlEscape(model.attributes.division) === CAMI.searchName;
+				case "School":
+					return CAMI.htmlEscape(model.attributes.school) === CAMI.searchName;
+				case "Rank":
+					return CAMI.htmlEscape(model.attributes.facultyRack) === CAMI.searchName;
+				case "Program":
+					return CAMI.htmlEscape(model.attributes.primaryProgram) === CAMI.searchName;
+				case "Institution":
+					return CAMI.htmlEscape(model.attributes.institution) === CAMI.searchName;
+				default:
+					return true;
+				}
+			});
+		}
+
+		// If we aren't searching for members yet (higher categories), populate the search 
+		// collection we are looking for and slide in the page with that collection.
+		switch (id) {
+			case "1":
+				this.currentPageName = "Departments";
+				departmentCollection.populate();
+				CAMI.searchType = "Department";
+				this.slidePage(new MemberResultsPage({model: departmentCollection}).render());
+				break;
+			case "2":
+				this.currentPageName = "Divisions";
+				divisionCollection.populate();
+				CAMI.searchType = "Division";
+				this.slidePage(new MemberResultsPage({model: divisionCollection}).render());
+				break;
+			case "3":
+				this.currentPageName = "Schools";
+				schoolCollection.populate();
+				CAMI.searchType = "School";
+				this.slidePage(new MemberResultsPage({model: schoolCollection}).render());
+				break;
+			case "4":
+				this.currentPageName = "Ranks";
+				rankCollection.populate();
+				CAMI.searchType = "Rank";
+				this.slidePage(new MemberResultsPage({model: rankCollection}).render());
+				break;
+			case "5":
+				this.currentPageName = "Primary Programs";
+				primaryProgramCollection.populate();
+				CAMI.searchType = "Program";
+				this.slidePage(new MemberResultsPage({model: primaryProgramCollection}).render());
+				break;
+			case "6":
+				this.currentPageName = "Institutions";
+				institutionCollection.populate();
+				CAMI.searchType = "Institution";
+				this.slidePage(new MemberResultsPage({model: institutionCollection}).render());
+				break;
+			default:
+				this.currentPageName = "Members";
+				filteredMembers = searchedMembers;
+				CAMI.searchType = "";
+				var newPage = new MemberResultsPage().render();
+				this.slidePage(newPage);
+		}
+	},
+	memberInfo: function (id) {
+		this.currentPageName = "Member Info";
+		//find the member with the specified member id
+		var member = memberCollection.find(function (member) {
+			return member.attributes.memberID === id;
+		});
+		this.slidePage(new MemberInfoPage({model: member}).render());
+	},
+	trialSearch: function () {
+		this.currentPageName = "Trial Search";
+		//populate our dropdown collections
+		phaseCollection.populate();
+		coopGroupCollection.populate();
+		siteCollection.populate();
+		diseaseSiteCollection.populate();
+		var newPage = new ClinicalTrialSearchPage().render();
+		this.slidePage(newPage);
+		newPage.setupBioMarker();
+		newPage.setupDropDownMenus();
+	},
+	trialResults: function () {
+		this.currentPageName = "Trials";
+		this.slidePage(new ClinicalTrialResultsPage().render());
+	},
+	trialInfo: function (id) {
+		//find the trial with the specified trial id
+		id = parseInt(id);
+		var clinicalTrial = clinicalTrialCollection.find(function (trial) {
+			return trial.attributes.trialID === id;
+		});
+		this.currentPageName = "Trial Info";
+		this.slidePage(new ClinicalTrialInfoPage({model: clinicalTrial}).render());
+	},
+	sharedResourcesSearch: function () {
+		this.currentPageName = "Shared Resources";
+		this.slidePage(new SharedResourcesSearchPage().render());
+	},
+	sharedResourcesInfo: function (id) {
+		this.currentPageName = "Shared Resources";
+		//find the resource with the specified resouce id
+		var sharedResource = sharedResourceCollection.find(function (resource) {
+			return resource.attributes.SharedResourceID === id;
+		});
+		this.slidePage(new SharedResourcesInfoPage({model: sharedResource}).render());
+	},
+	slidePage: function (page) {
+		myScroll.scrollTo(0, 0, 0);
+		
+		if (!this.currentPage) {
+			// If there is no current page (app just started) -> No transition: Position new page in the view port
+			$(page.el).attr('class', 'page stage-center');
+			$('#content').append(page.el);
+			this.pageHistory = [window.location.hash];
+			this.currentPage = page;
+			return;
+		}
+
+		// Cleaning up: remove old pages that were moved out of the viewport
+		$('.stage-right, .stage-left').remove();
+		var slideFrom;
+		if (page === this.homePage) {
+			// Always apply a Back (slide from left) transition when we go back to the home page
+			slideFrom = "left";
+			$(page.el).attr('class', 'page stage-left');
+			// Reinitialize page history
+			this.pageHistory = [window.location.hash];
+			document.getElementById("header").style.display = "none";
+		} else if (this.pageHistory.length > 1 && window.location.hash === this.pageHistory[this.pageHistory.length - 2]) {
+			// The new page is the same as the previous page -> Back transition
+			slideFrom = "left";
+			$(page.el).attr('class', 'page stage-left');
+			this.pageHistory.pop();
+			document.getElementById("header").style.display = "block";
+		} else {
+			// Forward transition (slide from right)
+			slideFrom = "right";
+			$(page.el).attr('class', 'page stage-right');
+			this.pageHistory.push(window.location.hash);
+			document.getElementById("header").style.display = "block";
+		}
+		$('#content').append(page.el);
+		
+		var self = this;
+		// Wait until the new page has been added to the DOM...
+		setTimeout(function () {
+			// Slide out the current page: If new page slides from the right -> slide current page to the left, and vice versa
+			$(self.currentPage.el).attr('class', 'page transition ' + (slideFrom === "right" ? 'stage-left' : 'stage-right'));
+			// Slide in the new page
+			$(page.el).attr('class', 'page stage-center transition');
+			self.currentPage = page;
+			$("#headerTitle").html(self.currentPageName);
+			window.scrollTo(0, 0);
+			myScroll.manualHeightSet(page, 'content');
+			// Finally, refresh iScroll to have proper bounds
+			setTimeout(function () { myScroll.refresh(); }, 0);
+		});
+
+		// Finally, check to see if we ought to refresh our data
+		CAMI.AppDataService.checkLoadData();
+	}
+});

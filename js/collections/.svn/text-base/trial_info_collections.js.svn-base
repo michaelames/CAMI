@@ -1,0 +1,92 @@
+//Collection to hold our list of terms
+window.PhaseCollection = Backbone.Collection.extend({
+	model: Phase,
+	comparator: function (phase) {
+		return phase.get("name");
+	},
+	populate: function () {
+		var self = this;
+		//if we already populated, don't do it again
+		if (self.length > 0) {
+			return;
+		}
+		var names = getInfoFromTrials("phase");
+		$.each(names, function (i, name) {
+			self.push(new Phase({name: name}));
+		});
+	}
+});
+window.CoopGroupCollection = Backbone.Collection.extend({
+	model: CoopGroup,
+	comparator: function (coopGroup) {
+		return coopGroup.get("name");
+	},
+	populate: function () {
+		var self = this;
+		//if we already populated, don't do it again
+		if (self.length > 0) {
+			return;
+		}
+		var names = getInfoFromTrials("sponsor");
+		$.each(names, function (i, name) {
+			self.push(new CoopGroup({name: name}));
+		});
+	}
+});
+window.DiseaseSiteCollection = Backbone.Collection.extend({
+	model: DiseaseSite,
+	comparator: function (diseaseSite) {
+		return diseaseSite.get("name");
+	},
+	populate: function () {
+		var self = this;
+		//if we already populated, don't do it again
+		if (self.length > 0) {
+			return;
+		}
+		var names = getInfoFromTrials("diseaseGroup");
+		$.each(names, function (i, name) {
+			self.push(new DiseaseSite({name: name}));
+		});
+	}
+});
+window.SiteCollection = Backbone.Collection.extend({
+	model: Site,
+	comparator: function (site) {
+		return site.get("name");
+	},
+	populate: function () {
+		var self = this;
+		//if we already populated, don't do it again
+		if (self.length > 0) {
+			return;
+		}
+		var names = [];
+		$.each(clinicalTrialCollection.models,
+			//push all unique strings
+			function (i, trial) {
+				$.each(trial.attributes.sites, function (i, site) {
+					if ($.inArray(site, names) === -1 && site !== "" && site.charAt(0) !== "(") {
+						names.push(site);
+					}
+				});
+			}
+		);
+		$.each(names, function (i, name) {
+			self.push(new Site({name: name}));
+		});
+	}
+});
+//Get all unique strings from the field of members
+function getInfoFromTrials(field) {
+	var names = [];
+	$.each(clinicalTrialCollection.models,
+		//push all unique strings
+		function (i, trial) {
+			if ($.inArray(trial.attributes[field], names) === -1 && trial.attributes[field] !== "" && trial.attributes[field].charAt(0) !== "(") {
+				names.push(trial.attributes[field]);
+			}
+		}
+	);
+	return names;
+}

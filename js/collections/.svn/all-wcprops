@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/CUCancerCenter/!svn/ver/327/trunk/CUCancerCenter/js/collections
+END
+clinical_trial_collection.js
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/CUCancerCenter/!svn/ver/327/trunk/CUCancerCenter/js/collections/clinical_trial_collection.js
+END
+trial_info_collections.js
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/CUCancerCenter/!svn/ver/327/trunk/CUCancerCenter/js/collections/trial_info_collections.js
+END
+shared_resource_collection.js
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/CUCancerCenter/!svn/ver/327/trunk/CUCancerCenter/js/collections/shared_resource_collection.js
+END
+member_info_collections.js
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/CUCancerCenter/!svn/ver/327/trunk/CUCancerCenter/js/collections/member_info_collections.js
+END
+member_collection.js
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/CUCancerCenter/!svn/ver/327/trunk/CUCancerCenter/js/collections/member_collection.js
+END

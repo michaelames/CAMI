@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/CUCancerCenter/!svn/ver/332/trunk/CUCancerCenter/templates/clinical_trials
+END
+clinical_trial_search.html
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/CUCancerCenter/!svn/ver/332/trunk/CUCancerCenter/templates/clinical_trials/clinical_trial_search.html
+END
+clinical_trial_result_button.html
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/CUCancerCenter/!svn/ver/327/trunk/CUCancerCenter/templates/clinical_trials/clinical_trial_result_button.html
+END
+clinical_trial_info.html
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/CUCancerCenter/!svn/ver/313/trunk/CUCancerCenter/templates/clinical_trials/clinical_trial_info.html
+END
+clinical_trial_results.html
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/CUCancerCenter/!svn/ver/328/trunk/CUCancerCenter/templates/clinical_trials/clinical_trial_results.html
+END
